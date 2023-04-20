@@ -1,0 +1,23 @@
+{
+  "name": "geradorsenha",
+  "version": "1.0.0",
+  "description": "gerador de senhas fortes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/izaque459/geradorSenha.git"
+  },
+  "keywords": [
+    "senha",
+    "força"
+  ],
+  "author": "Isaac Santos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/izaque459/geradorSenha/issues"
+  },
+  "homepage": "https://github.com/izaque459/geradorSenha#readme"
+}
