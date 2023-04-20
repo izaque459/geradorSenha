@@ -2,6 +2,22 @@ const { Command } = require("commander");
 
 const programa = new Command();
 
+
+
+function geradorSenha(tamanho) {
+    const variosCaracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~`|}{[]\\:;?><,./-=';
+    let senha = '';
+    let senhaSet = new Set();
+    while (senhaSet.size < tamanho) {
+      let randomIndex = Math.floor(Math.random() * variosCaracteres.length);
+      senhaSet.add(variosCaracteres[randomIndex]);
+    }
+    senha = Array.from(senhaSet).join('');
+    return senha;
+  }
+  
+
+
 programa
     .version('1.0.0')
     .description('Gerador de senhas entre 12 e 24 caracteres');
@@ -18,7 +34,7 @@ programa
         }
 
         let senha = geradorSenha(tamanhoSenha);
-        console.log(tamanhoSenha);
+        console.log(senha);
     });
   
 
