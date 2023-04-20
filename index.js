@@ -51,5 +51,15 @@ programa
         console.log("Senha gerada: "+senha);
     });
   
+programa
+    .command('checaSenha <senha>')
+    .description('Checa a senha, entre aspas simples, fornecida como inválida ou válida')
+    .action((senha)=>{
+        if(checaSenha(senha))
+            console.log("Senha válida: "+senha);
+        else
+            console.log("Senha inválida: "+senha);
+
+    });
 
 programa.parse(process.argv);
