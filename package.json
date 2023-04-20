@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/izaque459/geradorSenha/issues"
   },
-  "homepage": "https://github.com/izaque459/geradorSenha#readme"
+  "homepage": "https://github.com/izaque459/geradorSenha#readme",
+  "dependencies": {
+    "commander": "^10.0.1"
+  }
 }
