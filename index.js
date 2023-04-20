@@ -16,6 +16,19 @@ function geradorSenha(tamanho) {
     return senha;
   }
   
+  function checaSenha(senha) {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+~`|}{[\]:;?><,./-=]).{12,24}$/;
+    return regex.test(senha);
+  }
+  
+  function geradorSenhaForte(tamanho){
+    let senha = 'aaaaaaaaaaaa';
+    while(!checaSenha(senha)){
+        senha = geradorSenha(tamanho);
+    }
+    return senha;
+
+  }
 
 
 programa
@@ -33,8 +46,9 @@ programa
             tamanhoSenha = 24;
         }
 
-        let senha = geradorSenha(tamanhoSenha);
-        console.log(senha);
+        let senha = geradorSenhaForte(tamanhoSenha);
+
+        console.log("Senha gerada: "+senha);
     });
   
 
