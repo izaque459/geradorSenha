@@ -62,5 +62,13 @@ programa
             console.log("Senha inválida: "+senha);
 
     });
+	
+	 //ajuda padrão
+programa.helpOption('-h, --help', 'Exibir esta mensagem de ajuda.');
+// ajuda personalizado
+programa.on('--help', () => {
+  console.log('\nEsta versão gera senhas de até 36 caracteres');
+  console.log('Esta versão possui checador de senha digitadas na linha de comando');
+});
 
 programa.parse(process.argv);
