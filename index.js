@@ -17,7 +17,7 @@ function geradorSenha(tamanho) {
   }
   
   function checaSenha(senha) {
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+~`|}{[\]:;?><,./-=]).{12,36}$/;
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+~`|}{[\]:;?><,./-=]).{12,24}$/;
     return regex.test(senha);
   }
   
@@ -32,30 +32,34 @@ function geradorSenha(tamanho) {
 
 
 programa
-    .version('2.0.0')
-    .description('Gerador de senhas entre 12 e 36 caracteres');
+    .version('1.0.0')
+    .description('Gerador de senhas entre 12 e 24 caracteres');
 
 programa
   .option('-t, --tamanho <number>', 'define um tamanho para a senha (padrao 12)', parseInt)
   .action(()=>{
-        let tamanhoSenha = programa.opts().tamanho;
+        let tamanhoSenha = programa.opts().tamanho || 12;
 
         if (tamanhoSenha < 12) {
             tamanhoSenha = 12;
-        } else if (tamanhoSenha > 36) {
-            tamanhoSenha = 36;
+        } else if (tamanhoSenha > 24) {
+            tamanhoSenha = 24;
         }
 
         let senha = geradorSenhaForte(tamanhoSenha);
 
         console.log("Senha gerada: "+senha);
     });
+  
+programa
+    .command('checaSenha <senha>')
+    .description('Checa a senha, entre aspas simples, fornecida como inválida ou válida')
+    .action((senha)=>{
+        if(checaSenha(senha))
+            console.log("Senha válida: "+senha);
+        else
+            console.log("Senha inválida: "+senha);
 
-  //ajuda padrão
-programa.helpOption('-h, --help', 'Exibir esta mensagem de ajuda.');
-// ajuda personalizado
-programa.on('--help', () => {
-  console.log('\nEsta versão 2 gera senhas de até 36 caracteres');
-  console.log('Esta versão não possui checador de senha');
-});
+    });
+
 programa.parse(process.argv);
