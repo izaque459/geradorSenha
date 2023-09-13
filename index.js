@@ -33,17 +33,17 @@ function geradorSenha(tamanho) {
 
 programa
     .version('1.0.0')
-    .description('Gerador de senhas entre 12 e 24 caracteres');
+    .description('Gerador de senhas entre 12 e 36 caracteres');
 
 programa
   .option('-t, --tamanho <number>', 'define um tamanho para a senha (padrao 12)', parseInt)
   .action(()=>{
-        let tamanhoSenha = programa.opts().tamanho || 12;
+        let tamanhoSenha = programa.opts().tamanho;
 
         if (tamanhoSenha < 12) {
             tamanhoSenha = 12;
-        } else if (tamanhoSenha > 24) {
-            tamanhoSenha = 24;
+        } else if (tamanhoSenha > 36) {
+            tamanhoSenha = 36;
         }
 
         let senha = geradorSenhaForte(tamanhoSenha);
@@ -55,6 +55,7 @@ programa
     .command('checaSenha <senha>')
     .description('Checa a senha, entre aspas simples, fornecida como inválida ou válida')
     .action((senha)=>{
+
         if(checaSenha(senha))
             console.log("Senha válida: "+senha);
         else
